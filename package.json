@@ -11,6 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "clean": "rm -rf dist",
+    "cleanall": "rm -rf dist node_modules *.tgz docs",
     "docs": "rm -rf docs && typedoc",
     "prepublishOnly": "npm run clean && npm run compile"
   },
