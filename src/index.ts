@@ -1,3 +1,6 @@
-const a = 0;
+/**
+ * This is an example.
+ */
+const a = 1;
 
 export default a;
