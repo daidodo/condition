@@ -115,6 +115,7 @@ describe('isNumber', () => {
   describe('Given a number', () => {
     it('should return true', () => {
       expect(isNumber(0)).toBe(true);
+      expect(isNumber(10)).toBe(true);
     });
   });
   describe('Given not a number', () => {

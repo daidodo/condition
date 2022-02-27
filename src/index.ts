@@ -1,3 +1,18 @@
+/**
+ * Check if a condition is true, or throw an error with custom message.
+ * @example
+ * ```
+ *  const a: unknown = 'abc';
+ *  // a.length; // expect a compiler error
+ *
+ *  assertTrue(typeof a === 'string');
+ *  a.length; // OK, a is string
+ * ```
+ *
+ * @param condition The condition to be checked
+ * @param message Error message, or absent for default message
+ * @param props Extra properties to be added to error message
+ */
 export function assertTrue(
   condition: boolean,
   message?: string,
@@ -6,10 +21,36 @@ export function assertTrue(
   if (!condition) throwError(message ?? `Expected true but got ${condition}`, props);
 }
 
+/**
+ * Check if a value is neither `null` nor `undefined`.
+ * @example
+ * ```
+ *  const a = [1, undefined, 2];   // a is (number | undefined)[]
+ *  const b = a.filter(isNonNull); // b is number[]
+ * ```
+ *
+ * @param value The value to be checked
+ * @returns false if the value is `null` or `undefined`, or true otherwise
+ */
 export function isNonNull<T>(value: T): value is NonNullable<T> {
   return value !== undefined && value !== null;
 }
 
+/**
+ * Check if a value is neither `null` nor `undefined`, or throw an error with custom message.
+ * @example
+ * ```
+ *  function f(v?: string) {
+ *    //v.length; // expect a compiler error
+ *    assertIsNonNull(v);
+ *    v.length; // OK, v is string
+ *  }
+ * ```
+ *
+ * @param value The value to be checked
+ * @param message Error message, or absent for default message
+ * @param props Extra properties to be added to error message
+ */
 export function assertNonNull<T>(
   value: T,
   message?: string,
@@ -18,7 +59,30 @@ export function assertNonNull<T>(
   if (!isNonNull(value)) throwError(message ?? `Expected non-null value but got ${value}`, props);
 }
 
+/**
+ * Check if a value is number.
+ * @example
+ * ```
+ *  const a = ['1', 2, '3', 4];   // a is (string | number)[]
+ *  const b = a.filter(isNumber); // b is [2, 4], i.e. number[]
+ * ```
+ *
+ * @param value The value to be checked
+ * @returns true if the value is number, or false otherwise
+ */
 export const isNumber = isType<number>('number');
+
+/**
+ * Check if a value is string.
+ * @example
+ * ```
+ *  const a = ['1', 2, '3', 4];   // a is (string | number)[]
+ *  const b = a.filter(isString); // b is ['1', '3'], i.e. string[]
+ * ```
+ *
+ * @param value The value to be checked
+ * @returns true if the value is string, or false otherwise
+ */
 export const isString = isType<string>('string');
 export const isBoolean = isType<boolean>('boolean');
 export const isBigint = isType<bigint>('bigint');
