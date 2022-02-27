@@ -13,6 +13,7 @@
     "entryPoints": ["src/index.ts"],
     "hideInPageTOC": false,
     "hideBreadcrumbs": true,
+    "disableSources": false,
     "readme": "none",
     "name": "APIs Documentation",
     "excludeInternal": true

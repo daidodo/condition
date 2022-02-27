@@ -1,6 +1,6 @@
 {
-  "name": "prereq",
-  "version": "0.0.1",
+  "name": "@dozerg/condition",
+  "version": "1.0.0",
   "description": "Preconditions utility for TypeScript and JavaScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,21 +17,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daidodo/prereq.git"
+    "url": "git+https://github.com/daidodo/condition.git"
   },
   "keywords": [
     "precondition",
-    "preconditions",
-    "prereq",
-    "prerequisite",
-    "assert"
+    "condition",
+    "assert",
+    "isNonNull",
+    "assertNonNull"
   ],
   "author": "Zhao DAI <daidodo@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daidodo/prereq/issues"
+    "url": "https://github.com/daidodo/condition/issues"
   },
-  "homepage": "https://github.com/daidodo/prereq#readme",
+  "homepage": "https://github.com/daidodo/condition#readme",
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
