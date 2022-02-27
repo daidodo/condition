@@ -84,15 +84,53 @@ export const isNumber = isType<number>('number');
  * @returns true if the value is string, or false otherwise
  */
 export const isString = isType<string>('string');
+
+/**
+ * Check if a value is boolean.
+ * @example
+ * ```
+ *  const a = ['1', true, '3', false]; // a is (string | boolean)[]
+ *  const b = a.filter(isBoolean);      // b is [true, false], i.e. boolean[]
+ * ```
+ *
+ * @param value The value to be checked
+ * @returns true if the value is boolean, or false otherwise
+ */
 export const isBoolean = isType<boolean>('boolean');
+
+/**
+ * Check if a value is bigint.
+ * @example
+ * ```
+ *  const a = [1, BigInt(2), 3, BigInt(4)]; // a is (number | bigint)[]
+ *  const b = a.filter(isBigint);           // b is [BigInt(2), BigInt(3)], i.e. bigint[]
+ * ```
+ *
+ * @param value The value to be checked
+ * @returns true if the value is bigint, or false otherwise
+ */
 export const isBigint = isType<bigint>('bigint');
 
+/**
+ * Returns a function to check if a value is instance of a class.
+ * @example
+ * ```
+ *  class A {};
+ *  class B {};
+ *  const a = [new A(), 1, new B()]; // a is (number | A | B)[]
+ *  const b = a.filter(isClass(A));  // b is [new A()], i.e. A[]
+ * ```
+ *
+ * @param Class The constructor of a class
+ * @returns A function
+ */
 export function isClass<T extends { new (...args: any[]): unknown }>(Class: T) {
   return (value: any): value is InstanceType<T> => {
     return value instanceof Class;
   };
 }
 
+// https://github.com/microsoft/TypeScript/issues/41047#issuecomment-706752079
 const _assertIsNumber = assertIsType<number>(isNumber, v => `Expected a number but got ${desc(v)}`);
 const _assertIsString = assertIsType<string>(isString, v => `Expected a string but got ${desc(v)}`);
 const _assertIsBoolean = assertIsType<boolean>(
@@ -101,12 +139,97 @@ const _assertIsBoolean = assertIsType<boolean>(
 );
 const _assertIsBigint = assertIsType<bigint>(isBigint, v => `Expected a bigint but got ${desc(v)}`);
 
-// https://github.com/microsoft/TypeScript/issues/41047#issuecomment-706752079
+/**
+ * Check if a value is number, or throw an error with custom message.
+ * @example
+ * ```
+ *  function f(v: boolean | number) {
+ *    //v + 1; // expect a compiler error
+ *    assertIsNumber(v);
+ *    v + 1; // OK, v is number
+ *  }
+ * ```
+ *
+ * @param value The value to be checked
+ * @param message Error message, or absent for default message
+ * @param props Extra properties to be added to error message
+ */
 export const assertIsNumber: typeof _assertIsNumber = _assertIsNumber;
+
+/**
+ * Check if a value is string, or throw an error with custom message.
+ * @example
+ * ```
+ *  function f(v: boolean | string) {
+ *    //v.length; // expect a compiler error
+ *    assertIsString(v);
+ *    v.length; // OK, v is string
+ *  }
+ * ```
+ *
+ * @param value The value to be checked
+ * @param message Error message, or absent for default message
+ * @param props Extra properties to be added to error message
+ */
 export const assertIsString: typeof _assertIsString = _assertIsString;
+
+/**
+ * Check if a value is boolean, or throw an error with custom message.
+ * @example
+ * ```
+ *  function f(v: A) {}
+ *
+ *  function g(v: boolean | string) {
+ *    // f(v); // expect a compiler error
+ *    assertIsBoolean(v);
+ *    f(v); // OK, v is boolean
+ *  }
+ * ```
+ *
+ * @param value The value to be checked
+ * @param message Error message, or absent for default message
+ * @param props Extra properties to be added to error message
+ */
 export const assertIsBoolean: typeof _assertIsBoolean = _assertIsBoolean;
+
+/**
+ * Check if a value is bigint, or throw an error with custom message.
+ * @example
+ * ```
+ *  function f(v: bigint) {}
+ *
+ *  function g(v: bigint | string) {
+ *    // f(v); // expect a compiler error
+ *    assertIsBigint(v);
+ *    f(v); // OK, v is bigint
+ *  }
+ * ```
+ *
+ * @param value The value to be checked
+ * @param message Error message, or absent for default message
+ * @param props Extra properties to be added to error message
+ */
 export const assertIsBigint: typeof _assertIsBigint = _assertIsBigint;
 
+/**
+ * Check if a value is instance of a class, or throw an error with custom message.
+ * @example
+ * ```
+ *  class A {
+ *    a() {}
+ *  }
+ *
+ *  function f(v: A | string) {
+ *    // v.a(); // expect a compiler error
+ *    assertIsClass(A, v);
+ *    v.a(); // OK, v is class A
+ *  }
+ * ```
+ *
+ * @param value The value to be checked
+ * @param message Error message, or absent for default message
+ * @param props Extra properties to be added to error message
+ */
 export function assertIsClass<T extends { new (...args: any[]): unknown }>(
   Class: T,
   value: any,
