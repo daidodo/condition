@@ -23,6 +23,12 @@ export const isString = isType<string>('string');
 export const isBoolean = isType<boolean>('boolean');
 export const isBigint = isType<bigint>('bigint');
 
+export function isClass<T extends { new (...args: any[]): unknown }>(Class: T) {
+  return (value: any): value is InstanceType<T> => {
+    return value instanceof Class;
+  };
+}
+
 const _assertIsNumber = assertIsType<number>(isNumber, v => `Expected a number but got ${desc(v)}`);
 const _assertIsString = assertIsType<string>(isString, v => `Expected a string but got ${desc(v)}`);
 const _assertIsBoolean = assertIsType<boolean>(
@@ -36,6 +42,16 @@ export const assertIsNumber: typeof _assertIsNumber = _assertIsNumber;
 export const assertIsString: typeof _assertIsString = _assertIsString;
 export const assertIsBoolean: typeof _assertIsBoolean = _assertIsBoolean;
 export const assertIsBigint: typeof _assertIsBigint = _assertIsBigint;
+
+export function assertIsClass<T extends { new (...args: any[]): unknown }>(
+  Class: T,
+  value: any,
+  message?: string,
+  props?: object,
+): asserts value is InstanceType<T> {
+  if (!isClass(Class)(value))
+    throwError(message ?? `Expected class ${Class.name} but got ${desc(value)}`, props);
+}
 
 type TypeName = 'number' | 'string' | 'boolean' | 'bigint' | 'undefined';
 
@@ -61,7 +77,13 @@ function desc(v: any) {
     case 'string':
       return `'${v}'`;
     case 'object':
-      return JSON.stringify(v);
+      if (v === null) return 'null';
+      else if (Array.isArray(v)) return JSON.stringify(v);
+      else {
+        const { name } = v.constructor;
+        if (name === 'Object') return JSON.stringify(v);
+        return `class ${name}`;
+      }
     case 'function':
       return 'Function';
     default:

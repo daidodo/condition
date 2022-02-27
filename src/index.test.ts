@@ -1,12 +1,14 @@
 import {
   assertIsBigint,
   assertIsBoolean,
+  assertIsClass,
   assertIsNumber,
   assertIsString,
   assertNonNull,
   assertTrue,
   isBigint,
   isBoolean,
+  isClass,
   isNonNull,
   isNumber,
   isString,
@@ -371,6 +373,187 @@ describe('assertIsBigint', () => {
       });
       expect(b).toStrictEqual([BigInt(1)]);
       expect(f(b[0])).toBe(1);
+    });
+  });
+});
+
+describe('isClass', () => {
+  class A {
+    a() {
+      return 1;
+    }
+  }
+  class AA extends A {
+    constructor(a: number) {
+      super();
+    }
+    aa() {
+      return 2;
+    }
+  }
+  class B {}
+  describe('With constructor without params', () => {
+    const funcToTest = isClass(A);
+    describe('Given valid value', () => {
+      it('should return true', () => {
+        expect(funcToTest(new A())).toBe(true);
+        expect(funcToTest(new AA(1))).toBe(true);
+      });
+    });
+    describe('Given invalid value', () => {
+      it('should return false', () => {
+        expect(funcToTest(null)).toBe(false);
+        expect(funcToTest(undefined)).toBe(false);
+        expect(funcToTest('0')).toBe(false);
+        expect(funcToTest(0)).toBe(false);
+        expect(funcToTest(true)).toBe(false);
+        expect(funcToTest({})).toBe(false);
+        expect(funcToTest(new B())).toBe(false);
+      });
+    });
+    describe('Used in array', () => {
+      const a = [1, BigInt(2), '3', new A(), new AA(1), new B()];
+      // a[0].a(); // expect a compiler error
+      it('should assert values', () => {
+        const b = a.filter(funcToTest);
+        expect(b).toStrictEqual([new A(), new AA(2)]);
+        expect(b[0].a()).toBe(1);
+      });
+    });
+    describe('For subclass', () => {
+      const funcToTest = isClass(AA);
+      describe('Given valid value', () => {
+        it('should return true', () => {
+          expect(funcToTest(new AA(3))).toBe(true);
+        });
+      });
+      describe('Given invalid value', () => {
+        it('should return false', () => {
+          expect(funcToTest(null)).toBe(false);
+          expect(funcToTest(undefined)).toBe(false);
+          expect(funcToTest('0')).toBe(false);
+          expect(funcToTest(0)).toBe(false);
+          expect(funcToTest(true)).toBe(false);
+          expect(funcToTest({})).toBe(false);
+          expect(funcToTest(new A())).toBe(false);
+          expect(funcToTest(new B())).toBe(false);
+        });
+      });
+      describe('Used in array', () => {
+        const a = [1, BigInt(2), '3', new A(), new AA(4), new B()];
+        // a[0].aa(); // expect a compiler error
+        it('should assert values', () => {
+          const b = a.filter(funcToTest);
+          expect(b).toStrictEqual([new AA(5)]);
+          expect(b[0].aa()).toBe(2);
+        });
+      });
+    });
+  });
+});
+
+describe('assertIsClass', () => {
+  class A {
+    a() {
+      return 1;
+    }
+  }
+  class AA extends A {
+    constructor(a: number) {
+      super();
+    }
+    aa() {
+      return 2;
+    }
+  }
+  class B {}
+  const a: { x: string | A; y: AA | B } = { x: new A(), y: new AA(1) };
+  describe('For superclass', () => {
+    describe('Given valid value', () => {
+      // a.x.a(); // expect a compiler error
+      // a.y.a(); // expect a compiler error
+      it('should pass', () => {
+        assertIsClass(A, a.x);
+        expect(a.x.a()).toBe(1);
+        assertIsClass(A, a.y);
+        expect(a.y.a()).toBe(1);
+      });
+    });
+    describe('Given invalid value', () => {
+      it('should throw error', () => {
+        expect(() => assertIsClass(A, null)).toThrowError('Expected class A but got null.');
+        expect(() => assertIsClass(A, undefined)).toThrowError(
+          'Expected class A but got undefined.',
+        );
+        expect(() => assertIsClass(A, false)).toThrowError('Expected class A but got false.');
+        expect(() => assertIsClass(A, 'false')).toThrowError("Expected class A but got 'false'.");
+        expect(() => assertIsClass(A, 0)).toThrowError('Expected class A but got 0.');
+        expect(() => assertIsClass(A, {})).toThrowError('Expected class A but got {}.');
+        expect(() => assertIsClass(A, { x: 123 })).toThrowError(
+          'Expected class A but got {"x":123}.',
+        );
+        expect(() => assertIsClass(A, assertIsNumber)).toThrowError(
+          'Expected class A but got Function.',
+        );
+        expect(() => assertIsClass(A, [1, 2, 3])).toThrowError('Expected class A but got [1,2,3].');
+        expect(() => assertIsClass(A, new B())).toThrowError('Expected class A but got class B.');
+      });
+    });
+    describe('Used in array', () => {
+      const aa: (A | B)[] = [new A(), new AA(1)];
+      // aa[0].a(); // expect a compiler error
+      it('should assert values', () => {
+        const b = aa.map(v => {
+          assertIsClass(A, v);
+          return v;
+        });
+        expect(b).toStrictEqual([new A(), new AA(1)]);
+        expect(b[0].a()).toBe(1);
+      });
+    });
+  });
+  describe('For subclass', () => {
+    describe('Given valid value', () => {
+      // a.y.aa(); // expect a compiler error
+      it('should pass', () => {
+        assertIsClass(AA, a.y);
+        expect(a.y.aa()).toBe(2);
+      });
+    });
+    describe('Given invalid value', () => {
+      it('should throw error', () => {
+        expect(() => assertIsClass(AA, null)).toThrowError('Expected class AA but got null.');
+        expect(() => assertIsClass(AA, undefined)).toThrowError(
+          'Expected class AA but got undefined.',
+        );
+        expect(() => assertIsClass(AA, false)).toThrowError('Expected class AA but got false.');
+        expect(() => assertIsClass(AA, 'false')).toThrowError("Expected class AA but got 'false'.");
+        expect(() => assertIsClass(AA, 0)).toThrowError('Expected class AA but got 0.');
+        expect(() => assertIsClass(AA, {})).toThrowError('Expected class AA but got {}.');
+        expect(() => assertIsClass(AA, { x: 123 })).toThrowError(
+          'Expected class AA but got {"x":123}.',
+        );
+        expect(() => assertIsClass(AA, assertIsNumber)).toThrowError(
+          'Expected class AA but got Function.',
+        );
+        expect(() => assertIsClass(AA, [1, 2, 3])).toThrowError(
+          'Expected class AA but got [1,2,3].',
+        );
+        expect(() => assertIsClass(AA, new A())).toThrowError('Expected class AA but got class A.');
+        expect(() => assertIsClass(AA, new B())).toThrowError('Expected class AA but got class B.');
+      });
+    });
+    describe('Used in array', () => {
+      const aa: (AA | B)[] = [new AA(1)];
+      // aa[0].aa(); // expect a compiler error
+      it('should assert values', () => {
+        const b = aa.map(v => {
+          assertIsClass(AA, v);
+          return v;
+        });
+        expect(b).toStrictEqual([new AA(1)]);
+        expect(b[0].aa()).toBe(2);
+      });
     });
   });
 });
