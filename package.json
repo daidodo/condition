@@ -1,6 +1,6 @@
 {
   "name": "@dozerg/condition",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Preconditions utility for TypeScript and JavaScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

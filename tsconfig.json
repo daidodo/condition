@@ -8,7 +8,7 @@
     "rootDir": "src",
     "outDir": "dist"
   },
-  "exclude": ["**/*.test.ts"],
+  "exclude": ["**/*.test.ts", "dist/**/*"],
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
     "hideInPageTOC": false,
