@@ -1,7 +1,7 @@
 /**
  * Check if a condition is true, or throw an error with custom message.
  * @example
- * ```
+ * ```ts
  *  const a: unknown = 'abc';
  *  // a.length; // expect a compiler error
  *
@@ -24,7 +24,7 @@ export function assertTrue(
 /**
  * Check if a value is neither `null` nor `undefined`.
  * @example
- * ```
+ * ```ts
  *  const a = [1, undefined, 2];   // a is (number | undefined)[]
  *  const b = a.filter(isNonNull); // b is number[]
  * ```
@@ -39,7 +39,7 @@ export function isNonNull<T>(value: T): value is NonNullable<T> {
 /**
  * Check if a value is neither `null` nor `undefined`, or throw an error with custom message.
  * @example
- * ```
+ * ```ts
  *  function f(v?: string) {
  *    //v.length; // expect a compiler error
  *    assertIsNonNull(v);
@@ -62,7 +62,7 @@ export function assertNonNull<T>(
 /**
  * Check if a value is number.
  * @example
- * ```
+ * ```ts
  *  const a = ['1', 2, '3', 4];   // a is (string | number)[]
  *  const b = a.filter(isNumber); // b is [2, 4], i.e. number[]
  * ```
@@ -75,7 +75,7 @@ export const isNumber = isType<number>('number');
 /**
  * Check if a value is string.
  * @example
- * ```
+ * ```ts
  *  const a = ['1', 2, '3', 4];   // a is (string | number)[]
  *  const b = a.filter(isString); // b is ['1', '3'], i.e. string[]
  * ```
@@ -88,7 +88,7 @@ export const isString = isType<string>('string');
 /**
  * Check if a value is boolean.
  * @example
- * ```
+ * ```ts
  *  const a = ['1', true, '3', false]; // a is (string | boolean)[]
  *  const b = a.filter(isBoolean);      // b is [true, false], i.e. boolean[]
  * ```
@@ -101,7 +101,7 @@ export const isBoolean = isType<boolean>('boolean');
 /**
  * Check if a value is bigint.
  * @example
- * ```
+ * ```ts
  *  const a = [1, BigInt(2), 3, BigInt(4)]; // a is (number | bigint)[]
  *  const b = a.filter(isBigint);           // b is [BigInt(2), BigInt(3)], i.e. bigint[]
  * ```
@@ -114,7 +114,7 @@ export const isBigint = isType<bigint>('bigint');
 /**
  * Returns a function to check if a value is instance of a class.
  * @example
- * ```
+ * ```ts
  *  class A {};
  *  class B {};
  *  const a = [new A(), 1, new B()]; // a is (number | A | B)[]
@@ -142,7 +142,7 @@ const _assertIsBigint = assertIsType<bigint>(isBigint, v => `Expected a bigint b
 /**
  * Check if a value is number, or throw an error with custom message.
  * @example
- * ```
+ * ```ts
  *  function f(v: boolean | number) {
  *    //v + 1; // expect a compiler error
  *    assertIsNumber(v);
@@ -159,7 +159,7 @@ export const assertIsNumber: typeof _assertIsNumber = _assertIsNumber;
 /**
  * Check if a value is string, or throw an error with custom message.
  * @example
- * ```
+ * ```ts
  *  function f(v: boolean | string) {
  *    //v.length; // expect a compiler error
  *    assertIsString(v);
@@ -176,7 +176,7 @@ export const assertIsString: typeof _assertIsString = _assertIsString;
 /**
  * Check if a value is boolean, or throw an error with custom message.
  * @example
- * ```
+ * ```ts
  *  function f(v: A) {}
  *
  *  function g(v: boolean | string) {
@@ -195,7 +195,7 @@ export const assertIsBoolean: typeof _assertIsBoolean = _assertIsBoolean;
 /**
  * Check if a value is bigint, or throw an error with custom message.
  * @example
- * ```
+ * ```ts
  *  function f(v: bigint) {}
  *
  *  function g(v: bigint | string) {
@@ -214,7 +214,7 @@ export const assertIsBigint: typeof _assertIsBigint = _assertIsBigint;
 /**
  * Check if a value is instance of a class, or throw an error with custom message.
  * @example
- * ```
+ * ```ts
  *  class A {
  *    a() {}
  *  }
