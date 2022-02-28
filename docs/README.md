@@ -51,7 +51,7 @@ asserts value is bigint
 
 #### Defined in
 
-[index.ts:212](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L212)
+[index.ts:212](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L212)
 
 ___
 
@@ -86,7 +86,7 @@ asserts value is boolean
 
 #### Defined in
 
-[index.ts:193](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L193)
+[index.ts:193](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L193)
 
 ___
 
@@ -130,7 +130,7 @@ asserts value is InstanceType<T\>
 
 #### Defined in
 
-[index.ts:233](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L233)
+[index.ts:233](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L233)
 
 ___
 
@@ -163,7 +163,7 @@ asserts value is number
 
 #### Defined in
 
-[index.ts:157](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L157)
+[index.ts:157](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L157)
 
 ___
 
@@ -196,7 +196,7 @@ asserts value is string
 
 #### Defined in
 
-[index.ts:174](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L174)
+[index.ts:174](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L174)
 
 ___
 
@@ -235,7 +235,7 @@ asserts value is NonNullable<T\>
 
 #### Defined in
 
-[index.ts:54](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L54)
+[index.ts:54](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L54)
 
 ___
 
@@ -268,7 +268,7 @@ asserts condition
 
 #### Defined in
 
-[index.ts:16](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L16)
+[index.ts:16](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L16)
 
 ___
 
@@ -298,7 +298,7 @@ true if the value is bigint, or false otherwise
 
 #### Defined in
 
-[index.ts:112](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L112)
+[index.ts:112](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L112)
 
 ___
 
@@ -328,7 +328,7 @@ true if the value is boolean, or false otherwise
 
 #### Defined in
 
-[index.ts:99](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L99)
+[index.ts:99](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L99)
 
 ___
 
@@ -378,7 +378,7 @@ value is InstanceType<T\>
 
 #### Defined in
 
-[index.ts:127](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L127)
+[index.ts:127](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L127)
 
 ___
 
@@ -414,7 +414,7 @@ false if the value is `null` or `undefined`, or true otherwise
 
 #### Defined in
 
-[index.ts:35](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L35)
+[index.ts:35](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L35)
 
 ___
 
@@ -444,7 +444,7 @@ true if the value is number, or false otherwise
 
 #### Defined in
 
-[index.ts:73](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L73)
+[index.ts:73](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L73)
 
 ___
 
@@ -474,4 +474,4 @@ true if the value is string, or false otherwise
 
 #### Defined in
 
-[index.ts:86](https://github.com/daidodo/prereq/blob/7cfa7bd/src/index.ts#L86)
+[index.ts:86](https://github.com/daidodo/condition/blob/b05ae35/src/index.ts#L86)
