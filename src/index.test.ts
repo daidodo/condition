@@ -23,19 +23,19 @@ describe('assertTrue', () => {
       expect(a.length).toBeGreaterThanOrEqual(0);
     });
     it('should throw when condition is not met', () => {
-      expect(() => assertTrue(typeof a === 'number')).toThrowError('Expected true but got false.');
+      expect(() => assertTrue(typeof a === 'number')).toThrow('Expected true but got false.');
     });
     describe('With message', () => {
       it('should throw error with message', () => {
-        expect(() => assertTrue(typeof a === 'number', 'I need a number')).toThrowError(
+        expect(() => assertTrue(typeof a === 'number', 'I need a number')).toThrow(
           'I need a number.',
         );
       });
       describe('With props', () => {
         it('should throw error with props', () => {
-          expect(() =>
-            assertTrue(typeof a === 'number', 'I need a number', { p1: 3 }),
-          ).toThrowError('I need a number, props = {"p1":3}.');
+          expect(() => assertTrue(typeof a === 'number', 'I need a number', { p1: 3 })).toThrow(
+            'I need a number, props = {"p1":3}.',
+          );
         });
       });
     });
@@ -79,18 +79,16 @@ describe('assertNonNull', () => {
   });
   describe('Given null or undefined', () => {
     it('should throw error', () => {
-      expect(() => assertNonNull(null)).toThrowError('Expected non-null value but got null.');
-      expect(() => assertNonNull(undefined)).toThrowError(
-        'Expected non-null value but got undefined.',
-      );
+      expect(() => assertNonNull(null)).toThrow('Expected non-null value but got null.');
+      expect(() => assertNonNull(undefined)).toThrow('Expected non-null value but got undefined.');
     });
     describe('With message', () => {
       it('should throw error with message', () => {
-        expect(() => assertNonNull(undefined, 'I need a value')).toThrowError('I need a value.');
+        expect(() => assertNonNull(undefined, 'I need a value')).toThrow('I need a value.');
       });
       describe('With props', () => {
         it('should throw error with props', () => {
-          expect(() => assertNonNull(undefined, 'I need a value', { p1: true })).toThrowError(
+          expect(() => assertNonNull(undefined, 'I need a value', { p1: true })).toThrow(
             'I need a value, props = {"p1":true}.',
           );
         });
@@ -149,16 +147,14 @@ describe('assertIsNumber', () => {
   });
   describe('Given not a number', () => {
     it('should throw error', () => {
-      expect(() => assertIsNumber(null)).toThrowError('Expected a number but got null.');
-      expect(() => assertIsNumber(undefined)).toThrowError('Expected a number but got undefined.');
-      expect(() => assertIsNumber(false)).toThrowError('Expected a number but got false.');
-      expect(() => assertIsNumber('')).toThrowError("Expected a number but got ''.");
-      expect(() => assertIsNumber({})).toThrowError('Expected a number but got {}.');
-      expect(() => assertIsNumber({ x: 123 })).toThrowError('Expected a number but got {"x":123}.');
-      expect(() => assertIsNumber(assertIsNumber)).toThrowError(
-        'Expected a number but got Function.',
-      );
-      expect(() => assertIsNumber([1, 2, 3])).toThrowError('Expected a number but got [1,2,3].');
+      expect(() => assertIsNumber(null)).toThrow('Expected a number but got null.');
+      expect(() => assertIsNumber(undefined)).toThrow('Expected a number but got undefined.');
+      expect(() => assertIsNumber(false)).toThrow('Expected a number but got false.');
+      expect(() => assertIsNumber('')).toThrow("Expected a number but got ''.");
+      expect(() => assertIsNumber({})).toThrow('Expected a number but got {}.');
+      expect(() => assertIsNumber({ x: 123 })).toThrow('Expected a number but got {"x":123}.');
+      expect(() => assertIsNumber(assertIsNumber)).toThrow('Expected a number but got Function.');
+      expect(() => assertIsNumber([1, 2, 3])).toThrow('Expected a number but got [1,2,3].');
     });
   });
   describe('Used in array', () => {
@@ -213,16 +209,14 @@ describe('assertIsString', () => {
   });
   describe('Given not a string', () => {
     it('should throw error', () => {
-      expect(() => assertIsString(null)).toThrowError('Expected a string but got null.');
-      expect(() => assertIsString(undefined)).toThrowError('Expected a string but got undefined.');
-      expect(() => assertIsString(false)).toThrowError('Expected a string but got false.');
-      expect(() => assertIsString(0)).toThrowError('Expected a string but got 0.');
-      expect(() => assertIsString({})).toThrowError('Expected a string but got {}.');
-      expect(() => assertIsString({ x: 123 })).toThrowError('Expected a string but got {"x":123}.');
-      expect(() => assertIsString(assertIsNumber)).toThrowError(
-        'Expected a string but got Function.',
-      );
-      expect(() => assertIsString([1, 2, 3])).toThrowError('Expected a string but got [1,2,3].');
+      expect(() => assertIsString(null)).toThrow('Expected a string but got null.');
+      expect(() => assertIsString(undefined)).toThrow('Expected a string but got undefined.');
+      expect(() => assertIsString(false)).toThrow('Expected a string but got false.');
+      expect(() => assertIsString(0)).toThrow('Expected a string but got 0.');
+      expect(() => assertIsString({})).toThrow('Expected a string but got {}.');
+      expect(() => assertIsString({ x: 123 })).toThrow('Expected a string but got {"x":123}.');
+      expect(() => assertIsString(assertIsNumber)).toThrow('Expected a string but got Function.');
+      expect(() => assertIsString([1, 2, 3])).toThrow('Expected a string but got [1,2,3].');
     });
   });
   describe('Used in array', () => {
@@ -257,7 +251,7 @@ describe('isBoolean', () => {
   });
   describe('Used in array', () => {
     const a = [false, 2, '3', true];
-    const f = (b: boolean) => 1;
+    const f = (_: boolean) => 1;
     // f(a[0]); // expect a compiler error
     it('should assert string values', () => {
       const b = a.filter(isBoolean);
@@ -268,7 +262,7 @@ describe('isBoolean', () => {
 });
 
 describe('assertIsBoolean', () => {
-  const f = (b: boolean) => 1;
+  const f = (_: boolean) => 1;
   describe('Given a boolean', () => {
     const a: { x: string | boolean } = { x: true };
     // f(a.x); // expect a compiler error
@@ -279,20 +273,14 @@ describe('assertIsBoolean', () => {
   });
   describe('Given not a boolean', () => {
     it('should throw error', () => {
-      expect(() => assertIsBoolean(null)).toThrowError('Expected a boolean but got null.');
-      expect(() => assertIsBoolean(undefined)).toThrowError(
-        'Expected a boolean but got undefined.',
-      );
-      expect(() => assertIsBoolean('false')).toThrowError("Expected a boolean but got 'false'.");
-      expect(() => assertIsBoolean(0)).toThrowError('Expected a boolean but got 0.');
-      expect(() => assertIsBoolean({})).toThrowError('Expected a boolean but got {}.');
-      expect(() => assertIsBoolean({ x: 123 })).toThrowError(
-        'Expected a boolean but got {"x":123}.',
-      );
-      expect(() => assertIsBoolean(assertIsNumber)).toThrowError(
-        'Expected a boolean but got Function.',
-      );
-      expect(() => assertIsBoolean([1, 2, 3])).toThrowError('Expected a boolean but got [1,2,3].');
+      expect(() => assertIsBoolean(null)).toThrow('Expected a boolean but got null.');
+      expect(() => assertIsBoolean(undefined)).toThrow('Expected a boolean but got undefined.');
+      expect(() => assertIsBoolean('false')).toThrow("Expected a boolean but got 'false'.");
+      expect(() => assertIsBoolean(0)).toThrow('Expected a boolean but got 0.');
+      expect(() => assertIsBoolean({})).toThrow('Expected a boolean but got {}.');
+      expect(() => assertIsBoolean({ x: 123 })).toThrow('Expected a boolean but got {"x":123}.');
+      expect(() => assertIsBoolean(assertIsNumber)).toThrow('Expected a boolean but got Function.');
+      expect(() => assertIsBoolean([1, 2, 3])).toThrow('Expected a boolean but got [1,2,3].');
     });
   });
   describe('Used in array', () => {
@@ -311,7 +299,7 @@ describe('assertIsBoolean', () => {
 
 describe('isBigint', () => {
   const funcToTest = isBigint;
-  const f = (a: bigint) => 1;
+  const f = (_: bigint) => 1;
   describe('Given valid value', () => {
     it('should return true', () => {
       expect(funcToTest(BigInt(0))).toBe(true);
@@ -340,7 +328,7 @@ describe('isBigint', () => {
 });
 
 describe('assertIsBigint', () => {
-  const f = (b: bigint) => 1;
+  const f = (_: bigint) => 1;
   const a: { x: string | bigint } = { x: BigInt(1) };
   const aa = [a.x];
   describe('Given valid value', () => {
@@ -352,17 +340,15 @@ describe('assertIsBigint', () => {
   });
   describe('Given invalid value', () => {
     it('should throw error', () => {
-      expect(() => assertIsBigint(null)).toThrowError('Expected a bigint but got null.');
-      expect(() => assertIsBigint(undefined)).toThrowError('Expected a bigint but got undefined.');
-      expect(() => assertIsBigint(false)).toThrowError('Expected a bigint but got false.');
-      expect(() => assertIsBigint('false')).toThrowError("Expected a bigint but got 'false'.");
-      expect(() => assertIsBigint(0)).toThrowError('Expected a bigint but got 0.');
-      expect(() => assertIsBigint({})).toThrowError('Expected a bigint but got {}.');
-      expect(() => assertIsBigint({ x: 123 })).toThrowError('Expected a bigint but got {"x":123}.');
-      expect(() => assertIsBigint(assertIsNumber)).toThrowError(
-        'Expected a bigint but got Function.',
-      );
-      expect(() => assertIsBigint([1, 2, 3])).toThrowError('Expected a bigint but got [1,2,3].');
+      expect(() => assertIsBigint(null)).toThrow('Expected a bigint but got null.');
+      expect(() => assertIsBigint(undefined)).toThrow('Expected a bigint but got undefined.');
+      expect(() => assertIsBigint(false)).toThrow('Expected a bigint but got false.');
+      expect(() => assertIsBigint('false')).toThrow("Expected a bigint but got 'false'.");
+      expect(() => assertIsBigint(0)).toThrow('Expected a bigint but got 0.');
+      expect(() => assertIsBigint({})).toThrow('Expected a bigint but got {}.');
+      expect(() => assertIsBigint({ x: 123 })).toThrow('Expected a bigint but got {"x":123}.');
+      expect(() => assertIsBigint(assertIsNumber)).toThrow('Expected a bigint but got Function.');
+      expect(() => assertIsBigint([1, 2, 3])).toThrow('Expected a bigint but got [1,2,3].');
     });
   });
   describe('Used in array', () => {
@@ -385,7 +371,7 @@ describe('isClass', () => {
     }
   }
   class AA extends A {
-    constructor(a: number) {
+    constructor(_: number) {
       super();
     }
     aa() {
@@ -460,7 +446,7 @@ describe('assertIsClass', () => {
     }
   }
   class AA extends A {
-    constructor(a: number) {
+    constructor(_: number) {
       super();
     }
     aa() {
@@ -482,22 +468,18 @@ describe('assertIsClass', () => {
     });
     describe('Given invalid value', () => {
       it('should throw error', () => {
-        expect(() => assertIsClass(A, null)).toThrowError('Expected class A but got null.');
-        expect(() => assertIsClass(A, undefined)).toThrowError(
-          'Expected class A but got undefined.',
-        );
-        expect(() => assertIsClass(A, false)).toThrowError('Expected class A but got false.');
-        expect(() => assertIsClass(A, 'false')).toThrowError("Expected class A but got 'false'.");
-        expect(() => assertIsClass(A, 0)).toThrowError('Expected class A but got 0.');
-        expect(() => assertIsClass(A, {})).toThrowError('Expected class A but got {}.');
-        expect(() => assertIsClass(A, { x: 123 })).toThrowError(
-          'Expected class A but got {"x":123}.',
-        );
-        expect(() => assertIsClass(A, assertIsNumber)).toThrowError(
+        expect(() => assertIsClass(A, null)).toThrow('Expected class A but got null.');
+        expect(() => assertIsClass(A, undefined)).toThrow('Expected class A but got undefined.');
+        expect(() => assertIsClass(A, false)).toThrow('Expected class A but got false.');
+        expect(() => assertIsClass(A, 'false')).toThrow("Expected class A but got 'false'.");
+        expect(() => assertIsClass(A, 0)).toThrow('Expected class A but got 0.');
+        expect(() => assertIsClass(A, {})).toThrow('Expected class A but got {}.');
+        expect(() => assertIsClass(A, { x: 123 })).toThrow('Expected class A but got {"x":123}.');
+        expect(() => assertIsClass(A, assertIsNumber)).toThrow(
           'Expected class A but got Function.',
         );
-        expect(() => assertIsClass(A, [1, 2, 3])).toThrowError('Expected class A but got [1,2,3].');
-        expect(() => assertIsClass(A, new B())).toThrowError('Expected class A but got class B.');
+        expect(() => assertIsClass(A, [1, 2, 3])).toThrow('Expected class A but got [1,2,3].');
+        expect(() => assertIsClass(A, new B())).toThrow('Expected class A but got class B.');
       });
     });
     describe('Used in array', () => {
@@ -523,25 +505,19 @@ describe('assertIsClass', () => {
     });
     describe('Given invalid value', () => {
       it('should throw error', () => {
-        expect(() => assertIsClass(AA, null)).toThrowError('Expected class AA but got null.');
-        expect(() => assertIsClass(AA, undefined)).toThrowError(
-          'Expected class AA but got undefined.',
-        );
-        expect(() => assertIsClass(AA, false)).toThrowError('Expected class AA but got false.');
-        expect(() => assertIsClass(AA, 'false')).toThrowError("Expected class AA but got 'false'.");
-        expect(() => assertIsClass(AA, 0)).toThrowError('Expected class AA but got 0.');
-        expect(() => assertIsClass(AA, {})).toThrowError('Expected class AA but got {}.');
-        expect(() => assertIsClass(AA, { x: 123 })).toThrowError(
-          'Expected class AA but got {"x":123}.',
-        );
-        expect(() => assertIsClass(AA, assertIsNumber)).toThrowError(
+        expect(() => assertIsClass(AA, null)).toThrow('Expected class AA but got null.');
+        expect(() => assertIsClass(AA, undefined)).toThrow('Expected class AA but got undefined.');
+        expect(() => assertIsClass(AA, false)).toThrow('Expected class AA but got false.');
+        expect(() => assertIsClass(AA, 'false')).toThrow("Expected class AA but got 'false'.");
+        expect(() => assertIsClass(AA, 0)).toThrow('Expected class AA but got 0.');
+        expect(() => assertIsClass(AA, {})).toThrow('Expected class AA but got {}.');
+        expect(() => assertIsClass(AA, { x: 123 })).toThrow('Expected class AA but got {"x":123}.');
+        expect(() => assertIsClass(AA, assertIsNumber)).toThrow(
           'Expected class AA but got Function.',
         );
-        expect(() => assertIsClass(AA, [1, 2, 3])).toThrowError(
-          'Expected class AA but got [1,2,3].',
-        );
-        expect(() => assertIsClass(AA, new A())).toThrowError('Expected class AA but got class A.');
-        expect(() => assertIsClass(AA, new B())).toThrowError('Expected class AA but got class B.');
+        expect(() => assertIsClass(AA, [1, 2, 3])).toThrow('Expected class AA but got [1,2,3].');
+        expect(() => assertIsClass(AA, new A())).toThrow('Expected class AA but got class A.');
+        expect(() => assertIsClass(AA, new B())).toThrow('Expected class AA but got class B.');
       });
     });
     describe('Used in array', () => {

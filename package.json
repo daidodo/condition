@@ -8,12 +8,12 @@
   "scripts": {
     "compile": "tsc",
     "compile:watch": "tsc -w",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest src/",
+    "test:watch": "jest --watch src/",
     "clean": "rm -rf dist",
     "cleanall": "rm -rf dist node_modules *.tgz docs",
     "docs": "rm -rf docs && typedoc",
-    "prepublishOnly": "npm run clean && npm run compile"
+    "prepublishOnly": "npm run clean && npm i && tsc && jest src/ && eslint src/"
   },
   "repository": {
     "type": "git",
@@ -46,22 +46,17 @@
   "eslintConfig": {
     "root": true,
     "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "tsconfigRootDir": "./",
-      "project": [
-        "./tsconfig.json"
-      ]
-    },
     "plugins": [
       "@typescript-eslint",
+      "jest",
       "eslint-plugin-tsdoc"
     ],
     "extends": [
       "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
       "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "prettier/@typescript-eslint"
+      "prettier",
+      "plugin:jest/recommended",
+      "plugin:jest/style"
     ],
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
@@ -91,8 +86,11 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-jest": "^26.1.1",
     "eslint-plugin-tsdoc": "^0.2.14",
     "jest": "^27.5.1",
     "prettier": "^2.5.1",

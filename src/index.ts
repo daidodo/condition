@@ -9,9 +9,9 @@
  *  a.length; // OK, a is string
  * ```
  *
- * @param condition The condition to be checked
- * @param message Error message, or absent for default message
- * @param props Extra properties to be added to error message
+ * @param condition - The condition to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
  */
 export function assertTrue(
   condition: boolean,
@@ -29,7 +29,7 @@ export function assertTrue(
  *  const b = a.filter(isNonNull); // b is number[]
  * ```
  *
- * @param value The value to be checked
+ * @param value - The value to be checked
  * @returns false if the value is `null` or `undefined`, or true otherwise
  */
 export function isNonNull<T>(value: T): value is NonNullable<T> {
@@ -47,9 +47,9 @@ export function isNonNull<T>(value: T): value is NonNullable<T> {
  *  }
  * ```
  *
- * @param value The value to be checked
- * @param message Error message, or absent for default message
- * @param props Extra properties to be added to error message
+ * @param value - The value to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
  */
 export function assertNonNull<T>(
   value: T,
@@ -67,7 +67,7 @@ export function assertNonNull<T>(
  *  const b = a.filter(isNumber); // b is [2, 4], i.e. number[]
  * ```
  *
- * @param value The value to be checked
+ * @param value - The value to be checked
  * @returns true if the value is number, or false otherwise
  */
 export const isNumber = isType<number>('number');
@@ -80,7 +80,7 @@ export const isNumber = isType<number>('number');
  *  const b = a.filter(isString); // b is ['1', '3'], i.e. string[]
  * ```
  *
- * @param value The value to be checked
+ * @param value - The value to be checked
  * @returns true if the value is string, or false otherwise
  */
 export const isString = isType<string>('string');
@@ -93,7 +93,7 @@ export const isString = isType<string>('string');
  *  const b = a.filter(isBoolean);      // b is [true, false], i.e. boolean[]
  * ```
  *
- * @param value The value to be checked
+ * @param value - The value to be checked
  * @returns true if the value is boolean, or false otherwise
  */
 export const isBoolean = isType<boolean>('boolean');
@@ -106,7 +106,7 @@ export const isBoolean = isType<boolean>('boolean');
  *  const b = a.filter(isBigint);           // b is [BigInt(2), BigInt(3)], i.e. bigint[]
  * ```
  *
- * @param value The value to be checked
+ * @param value - The value to be checked
  * @returns true if the value is bigint, or false otherwise
  */
 export const isBigint = isType<bigint>('bigint');
@@ -121,7 +121,7 @@ export const isBigint = isType<bigint>('bigint');
  *  const b = a.filter(isClass(A));  // b is [new A()], i.e. A[]
  * ```
  *
- * @param Class The constructor of a class
+ * @param Class - The constructor of a class
  * @returns A function
  */
 export function isClass<T extends { new (...args: any[]): unknown }>(Class: T) {
@@ -150,9 +150,9 @@ const _assertIsBigint = assertIsType<bigint>(isBigint, v => `Expected a bigint b
  *  }
  * ```
  *
- * @param value The value to be checked
- * @param message Error message, or absent for default message
- * @param props Extra properties to be added to error message
+ * @param value - The value to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
  */
 export const assertIsNumber: typeof _assertIsNumber = _assertIsNumber;
 
@@ -167,9 +167,9 @@ export const assertIsNumber: typeof _assertIsNumber = _assertIsNumber;
  *  }
  * ```
  *
- * @param value The value to be checked
- * @param message Error message, or absent for default message
- * @param props Extra properties to be added to error message
+ * @param value - The value to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
  */
 export const assertIsString: typeof _assertIsString = _assertIsString;
 
@@ -186,9 +186,9 @@ export const assertIsString: typeof _assertIsString = _assertIsString;
  *  }
  * ```
  *
- * @param value The value to be checked
- * @param message Error message, or absent for default message
- * @param props Extra properties to be added to error message
+ * @param value - The value to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
  */
 export const assertIsBoolean: typeof _assertIsBoolean = _assertIsBoolean;
 
@@ -205,9 +205,9 @@ export const assertIsBoolean: typeof _assertIsBoolean = _assertIsBoolean;
  *  }
  * ```
  *
- * @param value The value to be checked
- * @param message Error message, or absent for default message
- * @param props Extra properties to be added to error message
+ * @param value - The value to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
  */
 export const assertIsBigint: typeof _assertIsBigint = _assertIsBigint;
 
@@ -226,9 +226,9 @@ export const assertIsBigint: typeof _assertIsBigint = _assertIsBigint;
  *  }
  * ```
  *
- * @param value The value to be checked
- * @param message Error message, or absent for default message
- * @param props Extra properties to be added to error message
+ * @param value - The value to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
  */
 export function assertIsClass<T extends { new (...args: any[]): unknown }>(
   Class: T,
@@ -267,6 +267,7 @@ function desc(v: any) {
       if (v === null) return 'null';
       else if (Array.isArray(v)) return JSON.stringify(v);
       else {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const { name } = v.constructor;
         if (name === 'Object') return JSON.stringify(v);
         return `class ${name}`;
