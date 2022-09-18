@@ -16,6 +16,7 @@
 - [isClass](README.md#isclass)
 - [isNonNull](README.md#isnonnull)
 - [isNumber](README.md#isnumber)
+- [isObject](README.md#isobject)
 - [isString](README.md#isstring)
 
 ## Functions
@@ -26,7 +27,8 @@
 
 Check if a value is bigint, or throw an error with custom message.
 
-**`example`**
+**`Example`**
+
 ```ts
  function f(v: bigint) {}
 
@@ -51,7 +53,7 @@ asserts value is bigint
 
 #### Defined in
 
-[index.ts:212](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L212)
+[index.ts:261](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L261)
 
 ___
 
@@ -61,7 +63,8 @@ ___
 
 Check if a value is boolean, or throw an error with custom message.
 
-**`example`**
+**`Example`**
+
 ```ts
  function f(v: A) {}
 
@@ -86,7 +89,7 @@ asserts value is boolean
 
 #### Defined in
 
-[index.ts:193](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L193)
+[index.ts:261](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L261)
 
 ___
 
@@ -96,7 +99,8 @@ ___
 
 Check if a value is instance of a class, or throw an error with custom message.
 
-**`example`**
+**`Example`**
+
 ```ts
  class A {
    a() {}
@@ -130,7 +134,7 @@ asserts value is InstanceType<T\>
 
 #### Defined in
 
-[index.ts:233](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L233)
+[index.ts:242](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L242)
 
 ___
 
@@ -140,7 +144,8 @@ ___
 
 Check if a value is number, or throw an error with custom message.
 
-**`example`**
+**`Example`**
+
 ```ts
  function f(v: boolean | number) {
    //v + 1; // expect a compiler error
@@ -163,7 +168,7 @@ asserts value is number
 
 #### Defined in
 
-[index.ts:157](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L157)
+[index.ts:261](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L261)
 
 ___
 
@@ -173,7 +178,8 @@ ___
 
 Check if a value is string, or throw an error with custom message.
 
-**`example`**
+**`Example`**
+
 ```ts
  function f(v: boolean | string) {
    //v.length; // expect a compiler error
@@ -196,7 +202,7 @@ asserts value is string
 
 #### Defined in
 
-[index.ts:174](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L174)
+[index.ts:261](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L261)
 
 ___
 
@@ -206,7 +212,8 @@ ___
 
 Check if a value is neither `null` nor `undefined`, or throw an error with custom message.
 
-**`example`**
+**`Example`**
+
 ```ts
  function f(v?: string) {
    //v.length; // expect a compiler error
@@ -235,7 +242,7 @@ asserts value is NonNullable<T\>
 
 #### Defined in
 
-[index.ts:54](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L54)
+[index.ts:54](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L54)
 
 ___
 
@@ -245,7 +252,8 @@ ___
 
 Check if a condition is true, or throw an error with custom message.
 
-**`example`**
+**`Example`**
+
 ```ts
  const a: unknown = 'abc';
  // a.length; // expect a compiler error
@@ -268,7 +276,7 @@ asserts condition
 
 #### Defined in
 
-[index.ts:16](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L16)
+[index.ts:16](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L16)
 
 ___
 
@@ -278,7 +286,8 @@ ___
 
 Check if a value is bigint.
 
-**`example`**
+**`Example`**
+
 ```ts
  const a = [1, BigInt(2), 3, BigInt(4)]; // a is (number | bigint)[]
  const b = a.filter(isBigint);           // b is [BigInt(2), BigInt(3)], i.e. bigint[]
@@ -298,7 +307,7 @@ true if the value is bigint, or false otherwise
 
 #### Defined in
 
-[index.ts:112](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L112)
+[index.ts:255](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L255)
 
 ___
 
@@ -308,7 +317,8 @@ ___
 
 Check if a value is boolean.
 
-**`example`**
+**`Example`**
+
 ```ts
  const a = ['1', true, '3', false]; // a is (string | boolean)[]
  const b = a.filter(isBoolean);      // b is [true, false], i.e. boolean[]
@@ -328,7 +338,7 @@ true if the value is boolean, or false otherwise
 
 #### Defined in
 
-[index.ts:99](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L99)
+[index.ts:255](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L255)
 
 ___
 
@@ -338,7 +348,8 @@ ___
 
 Returns a function to check if a value is instance of a class.
 
-**`example`**
+**`Example`**
+
 ```ts
  class A {};
  class B {};
@@ -378,7 +389,7 @@ value is InstanceType<T\>
 
 #### Defined in
 
-[index.ts:127](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L127)
+[index.ts:136](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L136)
 
 ___
 
@@ -388,7 +399,8 @@ ___
 
 Check if a value is neither `null` nor `undefined`.
 
-**`example`**
+**`Example`**
+
 ```ts
  const a = [1, undefined, 2];   // a is (number | undefined)[]
  const b = a.filter(isNonNull); // b is number[]
@@ -414,7 +426,7 @@ false if the value is `null` or `undefined`, or true otherwise
 
 #### Defined in
 
-[index.ts:35](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L35)
+[index.ts:35](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L35)
 
 ___
 
@@ -424,7 +436,8 @@ ___
 
 Check if a value is number.
 
-**`example`**
+**`Example`**
+
 ```ts
  const a = ['1', 2, '3', 4];   // a is (string | number)[]
  const b = a.filter(isNumber); // b is [2, 4], i.e. number[]
@@ -444,7 +457,31 @@ true if the value is number, or false otherwise
 
 #### Defined in
 
-[index.ts:73](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L73)
+[index.ts:255](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L255)
+
+___
+
+### isObject
+
+▸ **isObject**(`v`): `boolean`
+
+Check if a value is an object.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `v` | `any` | The value to be checked |
+
+#### Returns
+
+`boolean`
+
+true if the value is an object, or false otherwise
+
+#### Defined in
+
+[index.ts:119](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L119)
 
 ___
 
@@ -454,7 +491,8 @@ ___
 
 Check if a value is string.
 
-**`example`**
+**`Example`**
+
 ```ts
  const a = ['1', 2, '3', 4];   // a is (string | number)[]
  const b = a.filter(isString); // b is ['1', '3'], i.e. string[]
@@ -474,4 +512,4 @@ true if the value is string, or false otherwise
 
 #### Defined in
 
-[index.ts:86](https://github.com/daidodo/condition/blob/f2171dc/src/index.ts#L86)
+[index.ts:255](https://github.com/daidodo/condition/blob/c18677a/src/index.ts#L255)
