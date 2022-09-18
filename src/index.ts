@@ -112,6 +112,15 @@ export const isBoolean = isType<boolean>('boolean');
 export const isBigint = isType<bigint>('bigint');
 
 /**
+ * Check if a value is an object.
+ * @param v - The value to be checked
+ * @returns true if the value is an object, or false otherwise
+ */
+export function isObject(v: any) {
+  return typeof v === 'object' && !Array.isArray(v) && v !== null;
+}
+
+/**
  * Returns a function to check if a value is instance of a class.
  * @example
  * ```ts

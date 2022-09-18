@@ -1,6 +1,7 @@
 # Condition
 
 [![npm](https://img.shields.io/npm/v/@dozerg/condition.svg)](https://www.npmjs.com/package/@dozerg/condition) ![Downloads](https://img.shields.io/npm/dm/@dozerg/condition.svg)
+[![Build Status](https://github.com/daidodo/condition/actions/workflows/node.js.yml/badge.svg)](https://github.com/daidodo/condition/actions)
 
 Utilities for preconditions and assertions for TypeScript and JavaScript.
 
@@ -41,6 +42,7 @@ function foo(p?: string) {
 - [isNonNull](docs/README.md#isnonnull)
 - [isNumber](docs/README.md#isnumber)
 - [isString](docs/README.md#isstring)
+- [isObject](docs/README.md#isobject)
 
 ## License
 

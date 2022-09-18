@@ -11,6 +11,7 @@ import {
   isClass,
   isNonNull,
   isNumber,
+  isObject,
   isString,
 } from './';
 
@@ -360,6 +361,43 @@ describe('assertIsBigint', () => {
       });
       expect(b).toStrictEqual([BigInt(1)]);
       expect(f(b[0])).toBe(1);
+    });
+  });
+});
+
+describe('isObject', () => {
+  const funcToTest = isObject;
+  describe('Given valid value', () => {
+    class A {}
+    it('should return true', () => {
+      expect(funcToTest({})).toBe(true);
+      expect(funcToTest({ a: 1 })).toBe(true);
+      expect(funcToTest(new Date())).toBe(true);
+      expect(funcToTest(/.*/)).toBe(true);
+      expect(funcToTest(new A())).toBe(true);
+      expect(funcToTest(JSON)).toBe(true);
+      expect(funcToTest(new Object())).toBe(true);
+      expect(funcToTest(new Object(null))).toBe(true);
+      expect(funcToTest(Object.prototype)).toBe(true);
+      expect(funcToTest(Object.create(null))).toBe(true);
+      expect(funcToTest(Object.create(Object.create({ a: 1 })))).toBe(true);
+      expect(funcToTest(new Number(1))).toBe(true);
+    });
+  });
+  describe('Given invalid value', () => {
+    it('should return false', () => {
+      expect(funcToTest(null)).toBe(false);
+      expect(funcToTest(undefined)).toBe(false);
+      expect(funcToTest('0')).toBe(false);
+      expect(funcToTest(0)).toBe(false);
+      expect(funcToTest(true)).toBe(false);
+      expect(funcToTest([])).toBe(false);
+      expect(funcToTest(() => 3)).toBe(false);
+      expect(
+        funcToTest(function d() {
+          return 1;
+        }),
+      ).toBe(false);
     });
   });
 });
