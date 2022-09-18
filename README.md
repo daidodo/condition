@@ -36,6 +36,7 @@ function foo(p?: string) {
 - [assertIsString](docs/README.md#assertisstring)
 - [assertNonNull](docs/README.md#assertnonnull)
 - [assertTrue](docs/README.md#asserttrue)
+- [assertIsObject](docs/README.md#assertisobject)
 - [isBigint](docs/README.md#isbigint)
 - [isBoolean](docs/README.md#isboolean)
 - [isClass](docs/README.md#isclass)

@@ -221,6 +221,17 @@ export const assertIsBoolean: typeof _assertIsBoolean = _assertIsBoolean;
 export const assertIsBigint: typeof _assertIsBigint = _assertIsBigint;
 
 /**
+ * Check if a value is an object, or throw an error with custom message.
+ *
+ * @param value - The value to be checked
+ * @param message - Error message, or absent for default message
+ * @param props - Extra properties to be added to error message
+ */
+export function assertIsObject(value: any, message?: string, props?: object) {
+  if (!isObject(value)) throwError(message ?? `Expect an object but got ${desc(value)}`, props);
+}
+
+/**
  * Check if a value is instance of a class, or throw an error with custom message.
  * @example
  * ```ts
