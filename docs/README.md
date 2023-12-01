@@ -54,7 +54,7 @@ asserts value is bigint
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L272)
 
 ___
 
@@ -90,13 +90,13 @@ asserts value is boolean
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L272)
 
 ___
 
 ### assertIsClass
 
-▸ **assertIsClass**<`T`\>(`Class`, `value`, `message?`, `props?`): asserts value is InstanceType<T\>
+▸ **assertIsClass**\<`T`\>(`Class`, `value`, `message?`, `props?`): asserts value is InstanceType\<T\>
 
 Check if a value is instance of a class, or throw an error with custom message.
 
@@ -117,7 +117,7 @@ Check if a value is instance of a class, or throw an error with custom message.
 
 #### Returns
 
-asserts value is InstanceType<T\>
+asserts value is InstanceType\<T\>
 
 **`Example`**
 
@@ -135,7 +135,7 @@ asserts value is InstanceType<T\>
 
 #### Defined in
 
-[index.ts:253](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L253)
+[index.ts:253](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L253)
 
 ___
 
@@ -169,7 +169,7 @@ asserts value is number
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L272)
 
 ___
 
@@ -193,7 +193,7 @@ Check if a value is an object, or throw an error with custom message.
 
 #### Defined in
 
-[index.ts:230](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L230)
+[index.ts:230](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L230)
 
 ___
 
@@ -227,13 +227,13 @@ asserts value is string
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L272)
 
 ___
 
 ### assertNonNull
 
-▸ **assertNonNull**<`T`\>(`value`, `message?`, `props?`): asserts value is NonNullable<T\>
+▸ **assertNonNull**\<`T`\>(`value`, `message?`, `props?`): asserts value is NonNullable\<T\>
 
 Check if a value is neither `null` nor `undefined`, or throw an error with custom message.
 
@@ -253,7 +253,7 @@ Check if a value is neither `null` nor `undefined`, or throw an error with custo
 
 #### Returns
 
-asserts value is NonNullable<T\>
+asserts value is NonNullable\<T\>
 
 **`Example`**
 
@@ -267,7 +267,7 @@ asserts value is NonNullable<T\>
 
 #### Defined in
 
-[index.ts:54](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L54)
+[index.ts:54](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L54)
 
 ___
 
@@ -301,7 +301,7 @@ asserts condition
 
 #### Defined in
 
-[index.ts:16](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L16)
+[index.ts:16](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L16)
 
 ___
 
@@ -332,7 +332,7 @@ true if the value is bigint, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L266)
 
 ___
 
@@ -363,13 +363,13 @@ true if the value is boolean, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L266)
 
 ___
 
 ### isClass
 
-▸ **isClass**<`T`\>(`Class`): (`value`: `any`) => value is InstanceType<T\>
+▸ **isClass**\<`T`\>(`Class`): (`value`: `any`) => value is InstanceType\<T\>
 
 Returns a function to check if a value is instance of a class.
 
@@ -391,7 +391,7 @@ Returns a function to check if a value is instance of a class.
 
 A function
 
-▸ (`value`): value is InstanceType<T\>
+▸ (`value`): value is InstanceType\<T\>
 
 ##### Parameters
 
@@ -401,7 +401,7 @@ A function
 
 ##### Returns
 
-value is InstanceType<T\>
+value is InstanceType\<T\>
 
 **`Example`**
 
@@ -414,13 +414,13 @@ value is InstanceType<T\>
 
 #### Defined in
 
-[index.ts:136](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L136)
+[index.ts:136](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L136)
 
 ___
 
 ### isNonNull
 
-▸ **isNonNull**<`T`\>(`value`): value is NonNullable<T\>
+▸ **isNonNull**\<`T`\>(`value`): value is NonNullable\<T\>
 
 Check if a value is neither `null` nor `undefined`.
 
@@ -438,7 +438,7 @@ Check if a value is neither `null` nor `undefined`.
 
 #### Returns
 
-value is NonNullable<T\>
+value is NonNullable\<T\>
 
 false if the value is `null` or `undefined`, or true otherwise
 
@@ -451,7 +451,7 @@ false if the value is `null` or `undefined`, or true otherwise
 
 #### Defined in
 
-[index.ts:35](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L35)
+[index.ts:35](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L35)
 
 ___
 
@@ -482,7 +482,7 @@ true if the value is number, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L266)
 
 ___
 
@@ -506,7 +506,7 @@ true if the value is an object, or false otherwise
 
 #### Defined in
 
-[index.ts:119](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L119)
+[index.ts:119](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L119)
 
 ___
 
@@ -537,4 +537,4 @@ true if the value is string, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/02143a5/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/bdb4fcc/src/index.ts#L266)
