@@ -54,7 +54,7 @@ asserts value is bigint
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L272)
 
 ___
 
@@ -90,7 +90,7 @@ asserts value is boolean
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L272)
 
 ___
 
@@ -135,7 +135,7 @@ asserts value is InstanceType\<T\>
 
 #### Defined in
 
-[index.ts:253](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L253)
+[index.ts:253](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L253)
 
 ___
 
@@ -169,7 +169,7 @@ asserts value is number
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L272)
 
 ___
 
@@ -193,7 +193,7 @@ Check if a value is an object, or throw an error with custom message.
 
 #### Defined in
 
-[index.ts:230](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L230)
+[index.ts:230](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L230)
 
 ___
 
@@ -227,7 +227,7 @@ asserts value is string
 
 #### Defined in
 
-[index.ts:272](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L272)
+[index.ts:272](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L272)
 
 ___
 
@@ -267,7 +267,7 @@ asserts value is NonNullable\<T\>
 
 #### Defined in
 
-[index.ts:54](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L54)
+[index.ts:54](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L54)
 
 ___
 
@@ -301,7 +301,7 @@ asserts condition
 
 #### Defined in
 
-[index.ts:16](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L16)
+[index.ts:16](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L16)
 
 ___
 
@@ -332,7 +332,7 @@ true if the value is bigint, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L266)
 
 ___
 
@@ -363,7 +363,7 @@ true if the value is boolean, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L266)
 
 ___
 
@@ -414,7 +414,7 @@ value is InstanceType\<T\>
 
 #### Defined in
 
-[index.ts:136](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L136)
+[index.ts:136](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L136)
 
 ___
 
@@ -451,7 +451,7 @@ false if the value is `null` or `undefined`, or true otherwise
 
 #### Defined in
 
-[index.ts:35](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L35)
+[index.ts:35](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L35)
 
 ___
 
@@ -482,7 +482,7 @@ true if the value is number, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L266)
 
 ___
 
@@ -506,7 +506,7 @@ true if the value is an object, or false otherwise
 
 #### Defined in
 
-[index.ts:119](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L119)
+[index.ts:119](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L119)
 
 ___
 
@@ -537,4 +537,4 @@ true if the value is string, or false otherwise
 
 #### Defined in
 
-[index.ts:266](https://github.com/daidodo/condition/blob/e1171ed/src/index.ts#L266)
+[index.ts:266](https://github.com/daidodo/condition/blob/a1c00b2/src/index.ts#L266)
