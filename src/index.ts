@@ -287,7 +287,6 @@ function desc(v: any) {
       if (v === null) return 'null';
       else if (Array.isArray(v)) return JSON.stringify(v);
       else {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const { name } = v.constructor;
         if (name === 'Object') return JSON.stringify(v);
         return `class ${name}`;
